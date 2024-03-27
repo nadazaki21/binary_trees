@@ -7,16 +7,42 @@
 */
 int binary_tree_balance(const binary_tree_t *tree)
 {
-    int balance_factor;
-    size_t left_height, right_height;
+    /*int balance_factor;*/
+    size_t left_height = 0, right_height = 0;
 
     if (tree == NULL)
         return (0);
 
+    /*
+    if (tree->left != NULL)
+    {
+        left_height++;
+        left_height += binary_tree_balance(tree->left);
+    }
+
+    if (tree->right != NULL)
+    {
+        right_height++;
+        right_height += binary_tree_balance(tree->right);
+    }
+    
+
+
+    printf("height left at node %d is %ld\n", tree->n, left_height);
+    printf("height right at node %d is %ld\n", tree->n, right_height);
+    */
+    /* balance_factor = left_height - right_height; */
+
+    return (0);
+
+    
+    /* 
+    implementatoin with height function
+    */
+    /*
     if (tree->left != NULL)
     {
         left_height = binary_tree_height(tree->left);
-        /* printf(" the height of the node %d is %ld \n", tree->left->n, left_height); */
         left_height++;
     }
     else
@@ -27,7 +53,7 @@ int binary_tree_balance(const binary_tree_t *tree)
     if (tree->right != NULL)
     {
         right_height = binary_tree_height(tree->right);
-        /* printf(" the height of the node %d is %ld \n", tree->right->n ,right_height); */
+
         right_height++;
     }
     else
@@ -37,6 +63,6 @@ int binary_tree_balance(const binary_tree_t *tree)
 
     balance_factor = left_height - right_height;
 
-    
     return (balance_factor);
+    */
 }
