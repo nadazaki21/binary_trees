@@ -86,17 +86,20 @@ size_t leaves(const binary_tree_t *tree)
 	return (leaves_number);
 }
 /**
- * 
- * 
+ * complete_early_broken - checks if any of the nodes at height more than
+ * one doesn't have 2 childs, which would mean that that the tree is not
+ * complete
+ * @tree: tree root
+ * Return: 1 if check passes, 0 if it does not
 */
 int complete_early_broken(const binary_tree_t *tree)
 {
-    int flag = 1;
+	int flag = 1;
 
-    if (tree == NULL)
-        return (0);
+	if (tree == NULL)
+		return (0);
 
-    if (tree->left != NULL)
+	if (tree->left != NULL)
 	{
 		flag *= complete_early_broken(tree->left);
 	}
@@ -107,9 +110,9 @@ int complete_early_broken(const binary_tree_t *tree)
 	}
 
 	if (height(tree) > 1  && (tree->right == NULL || tree->left == NULL))
-    {
-        return (0);
-    }
+	{
+		return (0);
+	}
 
 	return (flag);
 }
@@ -121,25 +124,24 @@ int complete_early_broken(const binary_tree_t *tree)
 */
 int binary_tree_is_complete(const binary_tree_t *tree)
 {
-    int flag;
+	int flag;
 
-    if (tree == NULL)
-        return (0);
+	if (tree == NULL)
+		return (0);
 
-    if (complete_early_broken(tree) == 0)
-    {
-        return (0);
-    }
-    
-    if (leaves(tree) == (2*(nodes_at_1(tree))))
-    {
-        flag = 1;
-    }
-    else if (leaves(tree) > 0 && leaves(tree) < (2*(nodes_at_1(tree))))
-    {
-        flag = 0;
-    }
+	if (complete_early_broken(tree) == 0)
+	{
+		return (0);
+	}
 
-    return (flag);
+	if (leaves(tree) == (2 * (nodes_at_1(tree))))
+	{
+		flag = 1;
+	}
+	else if (leaves(tree) > 0 && leaves(tree) < (2 * (nodes_at_1(tree))))
+	{
+		flag = 0;
+	}
 
+	return (flag);
 }
