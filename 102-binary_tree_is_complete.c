@@ -125,6 +125,7 @@ int complete_early_broken(const binary_tree_t *tree)
 int binary_tree_is_complete(const binary_tree_t *tree)
 {
 	int flag;
+	binary_tree_t *right_most_node = tree->right;
 
 	if (tree == NULL)
 		return (0);
@@ -134,14 +135,21 @@ int binary_tree_is_complete(const binary_tree_t *tree)
 		return (0);
 	}
 
+	while (right_most_node->right != NULL)
+	{
+		right_most_node = right_most_node->right;
+	}
+
+
 	if (leaves(tree) == (2 * (nodes_at_1(tree))))
 	{
 		flag = 1;
 	}
-	else if (leaves(tree) > 0 && leaves(tree) < (2 * (nodes_at_1(tree))))
+	else if (leaves(tree) > 0 && leaves(tree) < (2 * (nodes_at_1(tree))) && height(right_most_node) != 0)
 	{
 		flag = 0;
 	}
+
 
 	return (flag);
 }
